@@ -65,13 +65,12 @@ exports.getclassesbyuser = async (req, res) => {
 
 exports.getclassesbycourse = async (req, res) =>{
   try {
-    const { colid, coursecode, user } = req.query;
+    const { colid, coursecode } = req.query;
 
     const classes = await classnew.find({
       colid: parseInt(colid),
-      coursecode: coursecode,
-      user: user
-    }).sort({ classdate: -1, classtime: -1 });
+      coursecode: coursecode
+    });
 
     return res.json({
       success: true,
